@@ -93,7 +93,7 @@ if __name__ == '__main__':
     port.connect_to(n_basic_b.output(0))
 
     # auto layout nodes.
-    # graph.auto_layout_nodes()
+    graph.auto_layout_nodes()
 
     # crate a backdrop node and wrap it around
     # "custom port node" and "group node".

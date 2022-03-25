@@ -1,4 +1,1 @@
-PySide6
-
-# pkg_info
-# qtpy
+PySide6==6.2.3
