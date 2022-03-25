@@ -1,5 +1,5 @@
 
-from qtpy import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets, QtGui
 
 from nodegraph.constants import VIEWER_BG_COLOR
 
@@ -72,7 +72,7 @@ class BaseMenu(QtWidgets.QMenu):
         return menus
 
 
-class GraphAction(QtWidgets.QAction):
+class GraphAction(QtGui.QAction):
 
     executed = QtCore.Signal(object)
 

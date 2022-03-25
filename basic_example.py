@@ -1,5 +1,6 @@
 
 import os
+import sys
 import signal
 
 from PySide6 import QtCore, QtWidgets
@@ -25,7 +26,7 @@ if __name__ == '__main__':
 
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
 
-    app = QtWidgets.QApplication([])
+    app = QtWidgets.QApplication(sys.argv)
 
     # create graph controller.
     graph = NodeGraph()
@@ -92,7 +93,7 @@ if __name__ == '__main__':
     port.connect_to(n_basic_b.output(0))
 
     # auto layout nodes.
-    graph.auto_layout_nodes()
+    # graph.auto_layout_nodes()
 
     # crate a backdrop node and wrap it around
     # "custom port node" and "group node".
@@ -135,4 +136,4 @@ if __name__ == '__main__':
     nodes_palette.set_category_label('nodes.group', 'Group Nodes')
     # nodes_palette.show()
 
-    app.exec_()
+    sys.exit(app.exec())
