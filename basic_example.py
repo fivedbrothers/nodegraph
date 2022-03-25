@@ -4,7 +4,7 @@ import signal
 
 from PySide6 import QtCore, QtWidgets
 
-from nodegraphqtpy import (
+from nodegraph import (
     NodeGraph,
     PropertiesBinWidget,
     NodesTreeWidget,
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     # fit node selection to the viewer.
     graph.fit_to_selection()
 
-    # Custom builtin widgets from nodegraphqtpy
+    # Custom builtin widgets from nodegraph
     # ---------------------------------------
 
     # create a node properties bin widget.

@@ -4,7 +4,7 @@ import sys
 
 import setuptools
 
-sys.path.append(os.path.join(os.path.dirname(__file__), 'nodegraphqtpy'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'nodegraph'))
 
 import pkg_info
 
@@ -16,7 +16,7 @@ with open('requirements.txt') as f:
 
 description = (
     'Node graph framework that can be re-implemented into applications that '
-    'supports PySide, PySide2 & PySide6 via QtPy'
+    'supports PySide6'
 )
 classifiers = [
     'Operating System :: OS Independent',
@@ -30,6 +30,7 @@ setuptools.setup(
     name=pkg_info.__module_name__,
     version=pkg_info.__version__,
     author=pkg_info.__author__,
+    translator=pkg_info.__translator__,
     author_email='',
     description=description,
     long_description=long_description,

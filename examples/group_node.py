@@ -1,4 +1,4 @@
-from nodegraphqtpy import GroupNode
+from nodegraph import GroupNode
 
 
 class MyGroupNode(GroupNode):

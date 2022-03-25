@@ -1,5 +1,5 @@
 
-from nodegraphqtpy import BaseNode
+from nodegraph import BaseNode
 
 
 class DropdownMenuNode(BaseNode):

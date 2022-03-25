@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from PySide6 import QtCore, QtGui
 
-from nodegraphqtpy import BaseNode
+from nodegraph import BaseNode
 
 
 def draw_triangle_port(painter, rect, info):

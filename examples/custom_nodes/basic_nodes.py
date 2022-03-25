@@ -1,4 +1,4 @@
-from nodegraphqtpy import BaseNode
+from nodegraph import BaseNode
 
 
 class BasicNodeA(BaseNode):
