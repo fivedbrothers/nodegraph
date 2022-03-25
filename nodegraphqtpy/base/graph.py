@@ -4,7 +4,7 @@ import json
 import os
 import re
 
-from qtpy import QtCore, QtWidgets, QtGui
+from PySide6 import QtCore, QtWidgets, QtGui
 
 from nodegraphqtpy.base.commands import (NodeAddedCmd,
                                        NodeRemovedCmd,
@@ -166,7 +166,7 @@ class NodeGraph(QtCore.QObject):
         # TODO: refactor hard coded tab search logic into
         #       "graph_actions.py" module.
         # hard coded tab search.
-        tab = QtWidgets.QShortcut(
+        tab = QtGui.QShortcut(
             QtGui.QKeySequence(QtCore.Qt.Key_Tab), self._viewer)
         tab.activated.connect(self._toggle_tab_search)
         self._viewer.show_tab_search.connect(self._toggle_tab_search)

@@ -1,7 +1,7 @@
 
 import math
 
-from qtpy import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from nodegraphqtpy.constants import (
     PIPE_DEFAULT_COLOR, PIPE_ACTIVE_COLOR,

@@ -1,5 +1,5 @@
 
-from qtpy import QtGui, QtCore, QtWidgets
+from PySide6 import QtGui, QtCore, QtWidgets
 
 from nodegraphqtpy.constants import Z_VAL_NODE_WIDGET
 

@@ -1,13 +1,13 @@
 
 import os
 
-from qtpy import QtWidgets
+from PySide6 import QtWidgets
 
 from .pkg_info import __version__
 
 __doc__ = """
-The ``nodes.constants`` namespace contains variables used throughout 
-the whole ``nodes`` library.
+The ``nodegraphqtpy.constants`` namespace contains variables used throughout 
+the whole ``nodegraphqtpy`` library.
 """
 
 #: Current version of the nodes framework.

@@ -1,7 +1,7 @@
 
 from distutils.version import LooseVersion
 
-from qtpy import QtGui, QtCore
+from PySide6 import QtGui, QtCore
 
 from nodegraphqtpy.errors import NodeMenuError
 from nodegraphqtpy.widgets.actions import BaseMenu, GraphAction, NodeAction

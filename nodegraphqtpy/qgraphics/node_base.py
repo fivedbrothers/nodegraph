@@ -1,7 +1,7 @@
 
 from collections import OrderedDict
 
-from qtpy import QtGui, QtCore, QtWidgets
+from PySide6 import QtGui, QtCore, QtWidgets
 
 from nodegraphqtpy.constants import (IN_PORT, OUT_PORT,
                                    NODE_WIDTH, NODE_HEIGHT,

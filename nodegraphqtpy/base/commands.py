@@ -1,5 +1,5 @@
 
-from qtpy import QtGui
+from PySide6 import QtGui
 
 from nodegraphqtpy.constants import IN_PORT, OUT_PORT
 

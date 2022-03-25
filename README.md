@@ -1,7 +1,7 @@
 # qtpy-nodes
 Node Graph Framework in QtPy
 
-
+This a port of the NodeGraphQt framework to run using PySide6.
 
 
 ## References

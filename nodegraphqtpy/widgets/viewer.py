@@ -485,8 +485,9 @@ class NodeViewer(QtWidgets.QGraphicsView):
                 path = QtGui.QPainterPath()
                 path.addRect(map_rect)
                 self._rubber_band.setGeometry(rect)
-                self.scene().setSelectionArea(
-                    path, QtCore.Qt.IntersectsItemShape
+                self.scene().setSelectionArea(path,
+                    QtCore.Qt.ItemSelectionOperation.ReplaceSelection,
+                    QtCore.Qt.ItemSelectionMode.IntersectsItemShape
                 )
                 self.scene().update(map_rect)
 
@@ -537,7 +538,7 @@ class NodeViewer(QtWidgets.QGraphicsView):
             delta = event.angleDelta().y()
             if delta == 0:
                 delta = event.angleDelta().x()
-        self._set_viewer_zoom(delta, pos=event.pos())
+        self._set_viewer_zoom(delta, pos=event.pixelDelta())
 
     def dropEvent(self, event):
         pos = self.mapToScene(event.pos())

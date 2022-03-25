@@ -2,7 +2,7 @@
 import os
 import signal
 
-from qtpy import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from nodegraphqtpy import (
     NodeGraph,

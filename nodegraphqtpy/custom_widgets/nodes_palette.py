@@ -1,7 +1,7 @@
 
 from collections import defaultdict
 
-from qtpy import QtWidgets, QtCore, QtGui
+from PySide6 import QtWidgets, QtCore, QtGui
 
 from nodegraphqtpy.constants import URN_SCHEME
 
