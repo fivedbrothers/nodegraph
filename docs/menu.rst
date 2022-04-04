@@ -1,7 +1,7 @@
 Menus
 #####
 
-.. currentmodule:: NodeGraphQt
+.. currentmodule:: nodegraph
 
 Graph Menu
 **********

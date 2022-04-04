@@ -80,7 +80,7 @@ The ``draw_triangle_port`` painter function can then be passed to the ``painter_
     :linenos:
     :emphasize-lines: 8
 
-    from NodeGraphQt import BaseNode
+    from nodegraph import BaseNode
 
     class MyListNode(BaseNode):
 

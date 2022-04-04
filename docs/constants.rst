@@ -1,6 +1,6 @@
 Constants
 #########
 
-.. automodule:: NodeGraphQt.constants
+.. automodule:: nodegraph.constants
     :members:
     :member-order: bysource

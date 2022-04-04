@@ -20,18 +20,19 @@ base_path = os.path.abspath('.')
 root_path = os.path.split(base_path)[0]
 sys.path.insert(0, root_path)
 
-import NodeGraphQt
+import nodegraph
 
 # -- Project information -----------------------------------------------------
 
-project = 'NodeGraphQt'
-author = NodeGraphQt.pkg_info.__author__
-copyright = '{}, {}'.format(datetime.now().year, author)
+project = 'nodegraph'
+author = nodegraph.pkg_info.__author__
+porter = nodegraph.pkg_info.__porter__
+copyright = '{}, {}, {}'.format(datetime.now().year, author, porter)
 
 # The full version, including alpha/beta/rc tags
-release = '{}'.format(NodeGraphQt.VERSION)
+release = '{}'.format(nodegraph.VERSION)
 # The short X.Y version
-version = '{0}.{1}'.format(*NodeGraphQt.VERSION.split('.'))
+version = '{0}.{1}'.format(*nodegraph.VERSION.split('.'))
 
 
 # -- General configuration ---------------------------------------------------
@@ -53,7 +54,7 @@ extensions = [
 
 intersphinx_mapping = {
     # 'python': ('https://docs.python.org/3', None),
-    'PySide2': ('https://doc.qt.io/qtforpython/', None),
+    'PySide6': ('https://doc.qt.io/qtforpython/', None),
 }
 
 # order of members.
@@ -116,9 +117,9 @@ html_show_sourcelink = False
 html_show_sphinx = False
 html_context = {
     'display_github': True,
-    'github_user': 'jchanvfx',
-    'github_repo': 'NodeGraphQt',
-    'github_version': "master",
+    'github_user': 'fivedbrothers',
+    'github_repo': 'nodegraph',
+    'github_version': "main",
     'conf_py_path': '/docs/',
     'source_suffix': '.rst',
 }
@@ -168,7 +169,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'NodeGraphQTdoc'
+htmlhelp_basename = 'nodegraphdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -195,8 +196,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'NodeGraphQT.tex', 'NodeGraphQt Documentation',
-     author, 'manual'),
+    (master_doc, 'nodegraph.tex', 'nodegraph Documentation',
+     author, porter, 'manual'),
 ]
 
 
@@ -205,7 +206,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'nodegraphqt', 'NodeGraphQt Documentation',
+    (master_doc, 'nodegraph', 'nodegraph Documentation',
      [author], 1)
 ]
 
@@ -217,10 +218,11 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc,
-     'NodeGraphQt', 'NodeGraphQT Documentation',
+     'nodegraph', 'nodegraph Documentation (NodeGraphQt using PySide6)',
      author,
-     'NodeGraphQt',
-     'Node graph framework that can be re-implemented into apps that supports PySide2.',
+     porter,
+     'nodegraph',
+     'Node graph framework that can be re-implemented into apps that supports PySide6.',
      'Miscellaneous'),
 ]
 

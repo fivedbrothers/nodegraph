@@ -1,6 +1,7 @@
-NodeGraphQt |version_str|
+nodegraph |version_str|
 #########################
 
+https://github.com/fivedbrothers/nodegraph
 https://github.com/jchanvfx/NodeGraphQt
 
 .. image:: _images/screenshot.png

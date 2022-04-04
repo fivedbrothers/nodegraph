@@ -1,5 +1,5 @@
 BackdropNode
 ############
 
-.. autoclass:: NodeGraphQt.BackdropNode
+.. autoclass:: nodegraph.BackdropNode
     :members:

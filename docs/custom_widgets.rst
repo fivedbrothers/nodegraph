@@ -1,26 +1,26 @@
 Custom Widgets
 ##############
 
-Here's a few custom widgets that included with the ``NodeGraphQt`` framework.
+Here's a few custom widgets that included with the ``nodegraph`` framework.
 
 
 Properties Bin
 **************
 
-.. autoclass:: NodeGraphQt.PropertiesBinWidget
+.. autoclass:: nodegraph.PropertiesBinWidget
     :members:
     :exclude-members: property_changed
 
 Nodes Palette
 *************
 
-.. autoclass:: NodeGraphQt.NodesPaletteWidget
+.. autoclass:: nodegraph.NodesPaletteWidget
     :members:
     :exclude-members: mimeData,
 
 Nodes Tree
 **********
 
-.. autoclass:: NodeGraphQt.NodesTreeWidget
+.. autoclass:: nodegraph.NodesTreeWidget
     :members:
     :exclude-members: mimeData

@@ -5,7 +5,7 @@ __status__ = 'Work in Progress'
 __license__ = 'MIT'
 
 __author__ = 'Johnny Chan'
-__translator__ = 'Mark Dasco'
+__porter__ = 'fivedbrothers'
 
 __module_name__ = 'nodegraph'
-__url__ = ['https://github.com/fivedbrothers/qtpy-nodes', 'https://github.com/jchanvfx/NodeGraphQt']
+__url__ = ['https://github.com/fivedbrothers/nodegraph', 'https://github.com/jchanvfx/NodeGraphQt']

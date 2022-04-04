@@ -1,6 +1,6 @@
 Port
 ####
 
-.. autoclass:: NodeGraphQt.Port
+.. autoclass:: nodegraph.Port
     :members:
     :exclude-members: model, view

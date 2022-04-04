@@ -1,12 +1,12 @@
 Menu Examples
 #############
 
-Examples for customizing context menus in NodeGraphQt.
+Examples for customizing context menus in nodegraph.
 
 Default Context Menu
 ********************
 
-The ``NodeGraphQt.NodeGraph`` has a default context menu with a few essential
+The ``nodegraph.NodeGraph`` has a default context menu with a few essential
 menu commands built when initialized it can be accessed with the
 :meth:`NodeGraph.context_menu` function.
 
@@ -23,7 +23,7 @@ the registered ``my_test()`` function.
 .. code-block:: python
     :linenos:
 
-    from NodeGraphQt import NodeGraph
+    from nodegraph import NodeGraph
 
     # test function.
     def my_test(graph):
@@ -49,17 +49,17 @@ Adding to the Nodes Menu
 Aside from the main context menu, the NodeGraph also has a nodes menu where you
 can override context menus on a per node type basis.
 
-Below is an example for overriding a context menu for the node type ``"com.chantasticvfx.FooNode"``
+Below is an example for overriding a context menu for the node type ``"com.fivedbrothers.FooNode"``
 
 .. code-block:: python
     :linenos:
 
-    from NodeGraphQt import BaseNode, NodeGraph, setup_context_menu
+    from nodegraph import BaseNode, NodeGraph, setup_context_menu
 
     # define a couple example nodes.
     class FooNode(BaseNode):
 
-        __identifier__ = 'com.chantasticvfx'
+        __identifier__ = 'com.fivedbrothers'
         NODE_NAME = 'foo node'
 
         def __init__(self):
@@ -89,11 +89,11 @@ Below is an example for overriding a context menu for the node type ``"com.chant
     # here we add override the context menu for "com.chantasticvfx.FooNode".
     nodes_menu.add_command('Test',
                            func=test_func,
-                           node_type='com.chantasticvfx.FooNode')
+                           node_type='com.fivedbrothers.FooNode')
 
     # create some nodes.
-    foo_node = graph.create_node('com.chantasticvfx.FooNode')
-    bar_node = graph.create_node('com.chantasticvfx.BarNode', pos=[300, 100])
+    foo_node = graph.create_node('com.fivedbrothers.FooNode')
+    bar_node = graph.create_node('com.fivedbrothers.BarNode', pos=[300, 100])
 
     # show widget.
     node_graph.widget.show()

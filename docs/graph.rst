@@ -8,16 +8,16 @@ NodeGraph
 
 ----
 
-.. autoclass:: NodeGraphQt.NodeGraph
+.. autoclass:: nodegraph.NodeGraph
     :members:
     :exclude-members: model, widget
 
-    .. autoattribute:: NodeGraphQt.NodeGraph.widget
-    .. autoattribute:: NodeGraphQt.NodeGraph.model
+    .. autoattribute:: nodegraph.NodeGraph.widget
+    .. autoattribute:: nodegraph.NodeGraph.model
 
 SubGraph
 ********
 
-.. autoclass:: NodeGraphQt.SubGraph
+.. autoclass:: nodegraph.SubGraph
     :members:
     :exclude-members: is_root, sub_graphs, widget

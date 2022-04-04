@@ -4,19 +4,19 @@ Node Examples
 Creating Nodes
 **************
 
-| Creating a node is done by calling the :func:`NodeGraphQt.NodeGraph.create_node` function.
+| Creating a node is done by calling the :func:`nodegraph.NodeGraph.create_node` function.
 | (`see example below` ``line: 23``)
 
 .. code-block:: python
     :linenos:
     :emphasize-lines: 22
 
-    from Qt import QtWidgets
-    from NodeGraphQt import BaseNode, NodeGraph
+    from PySide6 import QtWidgets
+    from nodegraph import BaseNode, NodeGraph
 
     class MyNode(BaseNode):
 
-        __identifier__ = 'com.chantasticvfx'
+        __identifier__ = 'com.fivedbrothers'
         NODE_NAME = 'my node'
 
         def __init__(self):
@@ -34,8 +34,8 @@ Creating Nodes
         node_graph.widget.show()
 
         # here we create a couple nodes in the node graph.
-        node_a = node_graph.create_node('com.chantasticvfx.MyNode', name='node a')
-        node_b = node_graph.create_node('com.chantasticvfx.MyNode', name='node b', pos=[300, 100])
+        node_a = node_graph.create_node('com.fivedbrothers.MyNode', name='node a')
+        node_b = node_graph.create_node('com.fivedbrothers.MyNode', name='node b', pos=[300, 100])
 
         app.exec_()
 
@@ -43,17 +43,17 @@ Creating Nodes
 Embedding Widgets
 *****************
 
-The :class:`NodeGraphQt.BaseNode` class allows you to embed some basic widgets inside a node here's a
+The :class:`nodegraph.BaseNode` class allows you to embed some basic widgets inside a node here's a
 example to simply embed a ``QComboBox`` widget when reimplementing the ``BaseNode``.
 
 .. code-block:: python
     :linenos:
 
-    from NodeGraphQt import BaseNode
+    from nodegraph import BaseNode
 
     class MyListNode(BaseNode):
 
-        __identifier__ = 'com.chantasticvfx'
+        __identifier__ = 'com.fivedbrothers'
         NODE_NAME = 'node'
 
         def __init__(self):
@@ -62,7 +62,7 @@ example to simply embed a ``QComboBox`` widget when reimplementing the ``BaseNod
             items = ['apples', 'bananas', 'pears', 'mangos', 'oranges']
             self.add_combo_menu('my_list', 'My List', items)
 
-To you update the widget you can call the :meth:`NodeGraphQt.NodeObject.set_property` function.
+To you update the widget you can call the :meth:`nodegraph.NodeObject.set_property` function.
 
 .. code-block:: python
     :linenos:
@@ -73,9 +73,9 @@ To you update the widget you can call the :meth:`NodeGraphQt.NodeObject.set_prop
 
 `functions for embedding widgets into a base node:`
 
- - ``QComboBox``: :meth:`NodeGraphQt.BaseNode.add_combo_menu`
- - ``QCheckBox``: :meth:`NodeGraphQt.BaseNode.add_checkbox`
- - ``QLineEdit``: :meth:`NodeGraphQt.BaseNode.add_text_input`
+ - ``QComboBox``: :meth:`nodegraph.BaseNode.add_combo_menu`
+ - ``QCheckBox``: :meth:`nodegraph.BaseNode.add_checkbox`
+ - ``QLineEdit``: :meth:`nodegraph.BaseNode.add_text_input`
 
 See: :ref:`Node Embedded Widgets` for more node widget types.
 
@@ -83,15 +83,15 @@ Embedding Custom Widgets
 ************************
 
 Here's an example to embed a custom widget where we subclass the
-:class:`NodeGraphQt.NodeBaseWidget` and then add to the node with the
-:meth:`NodeGraphQt.BaseNode.add_custom_widget` function.
+:class:`nodegraph.NodeBaseWidget` and then add to the node with the
+:meth:`nodegraph.BaseNode.add_custom_widget` function.
 
 .. code-block:: python
     :linenos:
     :emphasize-lines: 38, 96, 97
 
     from Qt import QtCore, QtWidgets
-    from NodeGraphQt import BaseNode, NodeBaseWidget
+    from nodegraph import BaseNode, NodeBaseWidget
 
     class MyCustomWidget(QtWidgets.QWidget):
         """
@@ -173,7 +173,7 @@ Here's an example to embed a custom widget where we subclass the
         """
 
         # set a unique node identifier.
-        __identifier__ = 'com.chantasticvfx'
+        __identifier__ = 'com.fivedbrothers'
 
         # set the initial default node name.
         NODE_NAME = 'my node'
@@ -220,14 +220,14 @@ connecting nodes with the port objects:
 
 `more on ports and connections.`
 
-        - :func:`NodeGraphQt.BaseNode.input`
-        - :func:`NodeGraphQt.BaseNode.output`
-        - :func:`NodeGraphQt.BaseNode.set_input`
-        - :func:`NodeGraphQt.BaseNode.set_output`
-        - :func:`NodeGraphQt.BaseNode.inputs`
-        - :func:`NodeGraphQt.BaseNode.outputs`
-        - :func:`NodeGraphQt.Port.connect_to`
-        - :func:`NodeGraphQt.Port.disconnect_from`
+        - :func:`nodegraph.BaseNode.input`
+        - :func:`nodegraph.BaseNode.output`
+        - :func:`nodegraph.BaseNode.set_input`
+        - :func:`nodegraph.BaseNode.set_output`
+        - :func:`nodegraph.BaseNode.inputs`
+        - :func:`nodegraph.BaseNode.outputs`
+        - :func:`nodegraph.Port.connect_to`
+        - :func:`nodegraph.Port.disconnect_from`
 
 
 Connecting a PropertiesBin
@@ -240,12 +240,12 @@ Here's an example where we subclass the ``NodeGraph`` and connect it up to a
     :linenos:
 
     from Qt import QtCore, QtWidgets
-    from NodeGraphQt import BaseNode, NodeGraph, PropertiesBinWidget
+    from nodegraph import BaseNode, NodeGraph, PropertiesBinWidget
 
 
     class MyNode(BaseNode):
 
-        __identifier__ = 'com.chantasticvfx'
+        __identifier__ = 'com.fivedbrothers'
         NODE_NAME = 'my node'
 
         def __init__(self):
@@ -282,11 +282,11 @@ Here's an example where we subclass the ``NodeGraph`` and connect it up to a
         node_graph.register_node(MyNode)
         node_graph.widget.show()
 
-        node_a = node_graph.create_node('com.chantasticvfx.MyNode')
+        node_a = node_graph.create_node('com.fivedbrothers.MyNode')
 
         app.exec_()
 
 `more on the properties bin and node_double_clicked signal`
 
-    - :class:`NodeGraphQt.PropertiesBinWidget`
-    - :attr:`NodeGraphQt.NodeGraph.node_double_clicked`
+    - :class:`nodegraph.PropertiesBinWidget`
+    - :attr:`nodegraph.NodeGraph.node_double_clicked`

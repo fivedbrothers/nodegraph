@@ -1,6 +1,6 @@
 GroupNode
 #########
 
-.. autoclass:: NodeGraphQt.GroupNode
+.. autoclass:: nodegraph.GroupNode
     :members:
     :exclude-members: add_input, add_output, delete_input, delete_output

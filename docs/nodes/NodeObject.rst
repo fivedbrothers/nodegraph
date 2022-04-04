@@ -1,7 +1,7 @@
 NodeObject
 ##########
 
-.. autoclass:: NodeGraphQt.NodeObject
+.. autoclass:: nodegraph.NodeObject
     :members:
     :exclude-members: NODE_NAME, graph, id, model, type_, view
 
@@ -18,7 +18,7 @@ NodeObject
     .. autoattribute:: __identifier__
         :annotation:
 
-        Unique node identifier domain. eg. ``"nodeGraphQt.nodes"``
+        Unique node identifier domain. eg. ``"nodegraph.nodes"``
 
         .. important:: re-implement this attribute to provide a unique node type.
 
@@ -31,7 +31,7 @@ NodeObject
     .. autoattribute:: type_
         :annotation:
 
-        Node type identifier followed by the class name (<identifier>.<class_name>). `eg.` ``"nodeGraphQt.nodes.NodeObject"``
+        Node type identifier followed by the class name (<identifier>.<class_name>). `eg.` ``"nodegraph.nodes.NodeObject"``
 
         :return: node type (``__identifier__.__className__``)
         :rtype: str
