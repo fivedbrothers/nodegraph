@@ -28,7 +28,7 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
                 'padding-bottom': '2px',
                 'padding-left': '1px',
                 'padding-right': '1px',
-                'font-size': '8pt',
+                'font-size': '9pt',
             },
             'QGroupBox::title': {
                 'subcontrol-origin': 'margin',
@@ -42,12 +42,12 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
             style_dict['QGroupBox']['padding-top'] = '2px'
 
         if align == 'center':
-            style_dict['QGroupBox::title']['subcontrol-position'] = 'top center'
+            style_dict['QGroupBox::title']['subcontrol-origin'] = 'top center'
         elif align == 'left':
-            style_dict['QGroupBox::title']['subcontrol-position'] += 'top left'
+            style_dict['QGroupBox::title']['subcontrol-origin'] += 'top left'
             style_dict['QGroupBox::title']['margin-left'] = '4px'
         elif align == 'right':
-            style_dict['QGroupBox::title']['subcontrol-position'] += 'top right'
+            style_dict['QGroupBox::title']['subcontrol-origin'] += 'top right'
             style_dict['QGroupBox::title']['margin-right'] = '4px'
         stylesheet = ''
         for css_class, css in style_dict.items():
