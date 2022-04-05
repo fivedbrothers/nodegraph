@@ -106,7 +106,7 @@ pygments_style = 'monokai'
 # It should be a Windows-style icon file (.ico), which is 16x16 or 32x32
 # pixels large. Default: None.
 html_favicon = '_images/favicon.png'
-html_logo = '_images/logo.png'
+html_logo = '_images/favicon.png'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -197,7 +197,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'nodegraph.tex', 'nodegraph Documentation',
-     author, porter, 'manual'),
+     porter, 'manual'),
 ]
 
 
@@ -207,7 +207,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'nodegraph', 'nodegraph Documentation',
-     [author], 1)
+     [porter, author], 1)
 ]
 
 
@@ -219,8 +219,8 @@ man_pages = [
 texinfo_documents = [
     (master_doc,
      'nodegraph', 'nodegraph Documentation (NodeGraphQt using PySide6)',
-     author,
      porter,
+     author,
      'nodegraph',
      'Node graph framework that can be re-implemented into apps that supports PySide6.',
      'Miscellaneous'),

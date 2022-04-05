@@ -9,7 +9,7 @@ Creating Nodes
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 22
+    :emphasize-lines: 23
 
     from PySide6 import QtWidgets
     from nodegraph import BaseNode, NodeGraph
@@ -90,7 +90,7 @@ Here's an example to embed a custom widget where we subclass the
     :linenos:
     :emphasize-lines: 38, 96, 97
 
-    from Qt import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     from nodegraph import BaseNode, NodeBaseWidget
 
     class MyCustomWidget(QtWidgets.QWidget):
@@ -239,7 +239,7 @@ Here's an example where we subclass the ``NodeGraph`` and connect it up to a
 .. code-block:: python
     :linenos:
 
-    from Qt import QtCore, QtWidgets
+    from PySide6 import QtCore, QtWidgets
     from nodegraph import BaseNode, NodeGraph, PropertiesBinWidget
 
 
