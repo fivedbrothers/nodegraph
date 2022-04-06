@@ -850,7 +850,7 @@ class NodeGraph(QtCore.QObject):
         Register the node to the :meth:`NodeGraph.node_factory`
 
         Args:
-            node (_nodegraphqtpy.NodeObject): node object.
+            node (nodegraph.NodeObject): node object.
             alias (str): custom alias name for the node type.
         """
         self._node_factory.register_node(node, alias)

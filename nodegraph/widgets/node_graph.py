@@ -3,6 +3,7 @@ from PySide6 import QtWidgets, QtGui
 from nodegraph.constants import (
     NODE_SEL_BORDER_COLOR,
     VIEWER_BG_COLOR,
+    VIEWER_FONT_COLOR,
     VIEWER_NAV_BG_COLOR
 )
 from nodegraph.widgets.viewer_nav import NodeNavigationWidget

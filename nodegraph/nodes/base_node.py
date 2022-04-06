@@ -185,7 +185,7 @@ class BaseNode(NodeObject):
     def add_text_input(self, name, label='', text='', tab=None):
         """
         Creates a custom property with the :meth:`NodeObject.create_property`
-        function and embeds a :class:`PySide2.QtWidgets.QLineEdit` widget
+        function and embeds a :class:`PySide6.QtWidgets.QLineEdit` widget
         into the node.
 
         Note:

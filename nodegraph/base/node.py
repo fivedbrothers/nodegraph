@@ -46,7 +46,7 @@ class NodeObject(object):
     """
 
     # Unique node identifier domain. `eg.` ``"com.chantacticvfx"``
-    __identifier__ = 'nodeGraphQt.nodes'
+    __identifier__ = 'nodegraph.nodes'
 
     # Base node name.
     NODE_NAME = None

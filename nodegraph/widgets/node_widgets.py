@@ -1,7 +1,7 @@
 
 from PySide6 import QtCore, QtWidgets
 
-from nodegraph.constants import VIEWER_GRID_COLOR, Z_VAL_NODE_WIDGET
+from nodegraph.constants import VIEWER_FONT_COLOR, VIEWER_GRID_COLOR, Z_VAL_NODE_WIDGET
 from nodegraph.errors import NodeWidgetError
 
 
@@ -19,7 +19,8 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
         super(_NodeGroupBox, self).setTitle(text)
 
     def setTitleAlign(self, align='center'):
-        text_color = self.palette().text().color().toTuple()
+        # text_color = self.palette().text().color().toTuple()
+        text_color = VIEWER_FONT_COLOR
         style_dict = {
             'QGroupBox': {
                 'background-color': 'rgba(0, 0, 0, 0)',
