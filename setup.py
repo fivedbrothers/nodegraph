@@ -30,7 +30,7 @@ setuptools.setup(
     name=pkg_info.__module_name__,
     version=pkg_info.__version__,
     author=pkg_info.__author__,
-    translator=pkg_info.__translator__,
+    porter=pkg_info.__porter__,
     author_email='',
     description=description,
     long_description=long_description,
@@ -42,7 +42,7 @@ setuptools.setup(
     include_package_data=True,
     python_requires='>=3.9',
     extras_require={
-        'PySide6': ['PySide6>=6.2']
+        'PySide6': ['PySide6==6.2.3']
     }
 )
 
