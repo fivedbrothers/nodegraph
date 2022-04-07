@@ -60,14 +60,14 @@ class NodeItem(AbstractNodeItem):
         painter.setBrush(QtCore.Qt.NoBrush)
 
         # base background.
-        margin = 1.0
+        margin = 0.9
         rect = self.boundingRect()
         rect = QtCore.QRectF(rect.left() + margin,
                              rect.top() + margin,
                              rect.width() - (margin * 2),
                              rect.height() - (margin * 2))
 
-        radius = 4.0
+        radius = 6.0
         painter.setBrush(QtGui.QColor(*self.color))
         painter.drawRoundedRect(rect, radius, radius)
 
@@ -77,24 +77,26 @@ class NodeItem(AbstractNodeItem):
             painter.drawRoundedRect(rect, radius, radius)
 
         # node name background.
-        padding = 3.0, 2.0
+        # padding = 3.0
         text_rect = self._text_item.boundingRect()
-        text_rect = QtCore.QRectF(text_rect.x() + padding[0],
-                                  rect.y() + padding[1],
-                                  rect.width() - padding[0] - margin,
-                                  text_rect.height() - (padding[1] * 2))
+        text_rect = QtCore.QRectF(
+            rect.left(),
+            rect.top() + margin,
+            rect.width(),
+            text_rect.height()
+        )
         if self.selected:
             painter.setBrush(QtGui.QColor(*NODE_SEL_COLOR))
         else:
             painter.setBrush(QtGui.QColor(0, 0, 0, 80))
-        painter.drawRoundedRect(text_rect, 3.0, 3.0)
+        painter.drawRoundedRect(text_rect, 3.6, 3.6)
 
         # node border
         if self.selected:
-            border_width = 1.2
+            border_width = 3.0
             border_color = QtGui.QColor(*NODE_SEL_BORDER_COLOR)
         else:
-            border_width = 0.8
+            border_width = 2.1
             border_color = QtGui.QColor(*self.border_color)
 
         border_rect = QtCore.QRectF(rect.left(), rect.top(),

@@ -161,7 +161,7 @@ class BaseNode(NodeObject):
     def add_combo_menu(self, name, label='', items=None, tab=None):
         """
         Creates a custom property with the :meth:`NodeObject.create_property`
-        function and embeds a :class:`PySide2.QtWidgets.QComboBox` widget
+        function and embeds a :class:`PySide6.QtWidgets.QComboBox` widget
         into the node.
 
         Note:
@@ -207,7 +207,7 @@ class BaseNode(NodeObject):
     def add_checkbox(self, name, label='', text='', state=False, tab=None):
         """
         Creates a custom property with the :meth:`NodeObject.create_property`
-        function and embeds a :class:`PySide2.QtWidgets.QCheckBox` widget
+        function and embeds a :class:`PySide6.QtWidgets.QCheckBox` widget
         into the node.
 
         Note:
