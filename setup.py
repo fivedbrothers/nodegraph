@@ -29,9 +29,8 @@ classifiers = [
 setuptools.setup(
     name=pkg_info.__module_name__,
     version=pkg_info.__version__,
-    author=pkg_info.__author__,
+    authors=pkg_info.__authors__,
     porter=pkg_info.__porter__,
-    author_email='',
     description=description,
     long_description=long_description,
     long_description_content_type='text/markdown',
