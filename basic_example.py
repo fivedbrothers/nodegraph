@@ -120,7 +120,7 @@ if __name__ == '__main__':
 
     # create a nodes tree widget.
     nodes_tree = NodesTreeWidget(node_graph=graph)
-    nodes_tree.set_category_label('nodeGraphQt.nodes', 'Builtin Nodes')
+    nodes_tree.set_category_label('nodegraph.nodes', 'Builtin Nodes')
     nodes_tree.set_category_label('nodes.custom.ports', 'Custom Port Nodes')
     nodes_tree.set_category_label('nodes.widget', 'Widget Nodes')
     nodes_tree.set_category_label('nodes.basic', 'Basic Nodes')
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     # create a node palette widget.
     nodes_palette = NodesPaletteWidget(node_graph=graph)
-    nodes_palette.set_category_label('nodeGraphQt.nodes', 'Builtin Nodes')
+    nodes_palette.set_category_label('nodegraph.nodes', 'Builtin Nodes')
     nodes_palette.set_category_label('nodes.custom.ports', 'Custom Port Nodes')
     nodes_palette.set_category_label('nodes.widget', 'Widget Nodes')
     nodes_palette.set_category_label('nodes.basic', 'Basic Nodes')
