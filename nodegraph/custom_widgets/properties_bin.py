@@ -58,7 +58,7 @@ class PropertiesList(QtWidgets.QTableWidget):
         self.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
 
     def wheelEvent(self, event):
-        delta = event.delta() * 0.2
+        delta = event.pixelDelta() * 0.2
         self.verticalScrollBar().setValue(
             self.verticalScrollBar().value() - delta
         )
