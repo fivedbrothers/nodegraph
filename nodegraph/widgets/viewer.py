@@ -2,7 +2,7 @@
 import math
 from distutils.version import LooseVersion
 
-from PySide6 import QtGui, QtCore, QtWidgets
+from PySide6 import QtGui, QtCore, QtWidgets, QtOpenGLWidgets
 
 from nodegraph.base.menu import BaseMenu
 from nodegraph.constants import IN_PORT, OUT_PORT, PIPE_LAYOUT_CURVED
@@ -1266,11 +1266,5 @@ class NodeViewer(QtWidgets.QGraphicsView):
         """
         Use QOpenGLWidget as the viewer.
         """
-        # use QOpenGLWidget instead of the deprecated QGLWidget to avoid
-        # problems with Wayland.
-        import Qt
-        if Qt.IsPySide2:
-            from PySide2.QtWidgets import QOpenGLWidget
-        elif Qt.IsPyQt5:
-            from PyQt5.QtWidgets import QOpenGLWidget
-        self.setViewport(QOpenGLWidget())
+        # use QOpenGLWidget instead of the deprecated QGLWidget to avoid problems with Wayland.
+        self.setViewport(QtOpenGLWidgets.QOpenGLWidget())
