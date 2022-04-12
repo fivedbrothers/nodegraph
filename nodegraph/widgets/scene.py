@@ -1,118 +1,131 @@
 
+import math
 from PySide6 import QtGui, QtCore, QtWidgets
 
-from nodegraph.constants import (VIEWER_BG_COLOR,
-                                   VIEWER_GRID_SIZE,
-                                   VIEWER_GRID_COLOR,
-                                   VIEWER_GRID_DOTS,
-                                   VIEWER_GRID_LINES)
+from nodegraph.constants import (
+    VIEWER_COLOR_BACKGROUND,
+    VIEWER_COLOR_GRID,
+    VIEWER_GRID_SIZE,
+    VIEWER_GRID_WIDTH,
+    VIEWER_GRID_SQUARES,
+    VIEWER_GRID_MODE_DOTS,
+    VIEWER_GRID_MODE_LINES
+)
 
 
 class NodeScene(QtWidgets.QGraphicsScene):
 
     def __init__(self, parent=None):
         super(NodeScene, self).__init__(parent)
-        self._grid_mode = VIEWER_GRID_LINES
-        self._grid_color = VIEWER_GRID_COLOR
-        self._bg_color = VIEWER_BG_COLOR
-        self.setBackgroundBrush(QtGui.QColor(*self._bg_color))
+        # settings
+        self._grid_size = VIEWER_GRID_SIZE
+        self._grid_width = VIEWER_GRID_WIDTH
+        self._grid_squares = VIEWER_GRID_SQUARES
+        self._grid_mode = VIEWER_GRID_MODE_LINES
+
+        self._bg_color = VIEWER_COLOR_BACKGROUND
+        self._grid_color = VIEWER_COLOR_GRID
+
+        # dark pen
+        self._pen_dark = QtGui.QPen(self._grid_color)
+        self._pen_dark.setWidthF(self._grid_width)
+        # light pen
+        self._pen_light =  QtGui.QPen(self._grid_color.darker(f=75))
+        self._pen_light.setWidthF(self._grid_width)
+        # dot pen
+        self._pen_dot =  QtGui.QPen(self._grid_color.lighter(f=180))
+        self._pen_dot.setWidthF(self._grid_width)
+
+        self.setBackgroundBrush(self._bg_color)
 
     def __repr__(self):
         cls_name = str(self.__class__.__name__)
         return '<{}("{}") object at {}>'.format(
             cls_name, self.viewer(), hex(id(self)))
 
-    # def _draw_text(self, painter, pen):
-    #     font = QtGui.QFont()
-    #     font.setPixelSize(48)
-    #     painter.setFont(font)
-    #     parent = self.viewer()
-    #     pos = QtCore.QPoint(20, parent.height() - 20)
-    #     painter.setPen(pen)
-    #     painter.drawText(parent.mapToScene(pos), 'Not Editable')
-
-    def _draw_grid(self, painter, rect, pen, grid_size):
+    def __draw_grid(self, painter, rect):
         """
         draws the grid lines in the scene.
 
         Args:
             painter (QtGui.QPainter): painter object.
             rect (QtCore.QRectF): rect object.
-            pen (QtGui.QPen): pen object.
-            grid_size (int): grid size.
         """
-        left = int(rect.left())
-        right = int(rect.right())
-        top = int(rect.top())
-        bottom = int(rect.bottom())
 
-        first_left = left - (left % grid_size)
-        first_top = top - (top % grid_size)
+        # create grid
+        left = int(math.floor(rect.left()))
+        right = int(math.floor(rect.right()))
+        top = int(math.floor(rect.top()))
+        bottom = int(math.floor(rect.bottom()))
 
-        lines = []
-        lines.extend([
-            QtCore.QLineF(x, top, x, bottom)
-            for x in range(first_left, right, grid_size)
-        ])
-        lines.extend([
-            QtCore.QLineF(left, y, right, y)
-            for y in range(first_top, bottom, grid_size)]
-        )
+        first_left = left - (left % self._grid_size)
+        first_top = top - (top % self._grid_size)
 
-        painter.setPen(pen)
-        painter.drawLines(lines)
+        # compute lines to be drawn
+        lines_light, lines_dark = [], []
+        # horizontal lines
+        for x in range(first_left, right, self._grid_size):
+            if (x % (self._grid_size * self._grid_squares) != 0):
+                lines_dark.append(QtCore.QLineF(x, top, x, bottom))
+            else:
+                lines_light.append(QtCore.QLineF(x, top, x, bottom))
+        # vertical lines
+        for y in range(first_top, bottom, self._grid_size):
+            if (y % (self._grid_size * self._grid_squares) != 0):
+                lines_dark.append(QtCore.QLineF(left, y, right, y))
+            else:
+                lines_light.append(QtCore.QLineF(left, y, right, y))
+        
+        # draw the dark lines
+        painter.setPen(self._pen_dark)
+        painter.drawLines(lines_dark)
 
-    def _draw_dots(self, painter, rect, pen, grid_size):
+        # draw the light lines
+        painter.setPen(self._pen_light)
+        painter.drawLines(lines_light)
+    
+    def __draw_dots(self, painter, rect):
         """
         draws the grid dots in the scene.
 
         Args:
             painter (QtGui.QPainter): painter object.
             rect (QtCore.QRectF): rect object.
-            pen (QtGui.QPen): pen object.
-            grid_size (int): grid size.
         """
+
+        grid_size = self._grid_size
+
         zoom = self.viewer().get_zoom()
         if zoom < 0:
             grid_size = int(abs(zoom) / 0.3 + 1) * grid_size
 
-        left = int(rect.left())
-        right = int(rect.right())
-        top = int(rect.top())
-        bottom = int(rect.bottom())
+        # create grid
+        left = int(math.floor(rect.left()))
+        right = int(math.floor(rect.right()))
+        top = int(math.floor(rect.top()))
+        bottom = int(math.floor(rect.bottom()))
 
         first_left = left - (left % grid_size)
         first_top = top - (top % grid_size)
 
-        pen.setWidth(grid_size / 10)
-        painter.setPen(pen)
+        painter.setPen(self._pen_dot)
 
         [painter.drawPoint(int(x), int(y))
          for x in range(first_left, right, grid_size)
          for y in range(first_top, bottom, grid_size)]
 
     def drawBackground(self, painter, rect):
-        super(NodeScene, self).drawBackground(painter, rect)
+        super().drawBackground(painter, rect)
 
         painter.save()
-        painter.setRenderHint(QtGui.QPainter.Antialiasing, False)
+        painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
         painter.setBrush(self.backgroundBrush())
 
-        if self._grid_mode is VIEWER_GRID_DOTS:
-            pen = QtGui.QPen(QtGui.QColor(*self.grid_color), 0.65)
-            self._draw_dots(painter, rect, pen, VIEWER_GRID_SIZE)
+        if self._grid_mode is VIEWER_GRID_MODE_DOTS:
+            self.__draw_dots(painter, rect)
 
-        elif self._grid_mode is VIEWER_GRID_LINES:
-            zoom = self.viewer().get_zoom()
-            if zoom > -0.5:
-                pen = QtGui.QPen(QtGui.QColor(*self.grid_color), 0.65)
-                self._draw_grid(painter, rect, pen, VIEWER_GRID_SIZE)
-
-            color = QtGui.QColor(*self._bg_color).darker(150)
-            if zoom < -0.0:
-                color = color.darker(100 - int(zoom * 110))
-            pen = QtGui.QPen(color, 0.65)
-            self._draw_grid(painter, rect, pen, VIEWER_GRID_SIZE * 8)
+        elif self._grid_mode is VIEWER_GRID_MODE_LINES:
+            self.__draw_grid(painter, rect)
 
         painter.restore()
 
@@ -148,7 +161,7 @@ class NodeScene(QtWidgets.QGraphicsScene):
         return self._grid_mode
 
     @grid_mode.setter
-    def grid_mode(self, mode=VIEWER_GRID_LINES):
+    def grid_mode(self, mode=VIEWER_GRID_MODE_LINES):
         self._grid_mode = mode
 
     @property

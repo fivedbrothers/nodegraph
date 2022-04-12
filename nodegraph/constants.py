@@ -1,7 +1,8 @@
 
 import os
 
-from PySide6 import QtWidgets
+from PySide6.QtWidgets import QGraphicsItem
+from PySide6.QtGui import QColor
 
 from .pkg_info import __version__
 
@@ -106,7 +107,18 @@ VIEWER_NAV_ITEM_COLOR = (48, 48, 48)
 VIEWER_BG_COLOR = (36, 36, 36)
 VIEWER_FONT_COLOR = (180, 180, 180)
 VIEWER_GRID_COLOR = (90, 90, 90)
-VIEWER_GRID_SIZE = 30
+# VIEWER_GRID_SIZE = 30
+
+VIEWER_GRID_MODE_NONE = 0
+VIEWER_GRID_MODE_DOTS = 1
+VIEWER_GRID_MODE_LINES = 2
+
+VIEWER_GRID_SIZE = 10
+VIEWER_GRID_SQUARES = 10 
+VIEWER_GRID_WIDTH = 0.6
+VIEWER_COLOR_BACKGROUND = QColor("#1e241e")
+VIEWER_COLOR_GRID = QColor("#303030")
+VIEWER_COLOR_FONT = QColor("#ffffff")
 
 URI_SCHEME = 'nodegraph://'
 URN_SCHEME = 'nodegraph::'
@@ -131,7 +143,7 @@ Z_VAL_NODE_WIDGET = 3
 # QGraphicsItem.DeviceCoordinateCache
 # QGraphicsItem.ItemCoordinateCache
 
-ITEM_CACHE_MODE = QtWidgets.QGraphicsItem.DeviceCoordinateCache
+ITEM_CACHE_MODE = QGraphicsItem.DeviceCoordinateCache
 
 # === NODE LAYOUT DIRECTION ===
 
