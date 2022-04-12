@@ -63,29 +63,32 @@ class TabSearchMenuWidget(QtWidgets.QMenu):
         self.line_edit = QtWidgets.QLineEdit()
         self.line_edit.setAttribute(QtCore.Qt.WA_MacShowFocusRect, 0)
         self.line_edit.setMinimumSize(200, 22)
-        text_color = self.palette().text().color().toTuple()
-        selected_color = self.palette().highlight().color().toTuple()
-        style_dict = {
-            'QLineEdit': {
-                'color': 'rgb({0},{1},{2})'.format(*text_color),
-                'border': '1px solid rgb({0},{1},{2})'
-                          .format(*selected_color),
-                'border-radius': '3px',
-                'padding': '2px 4px',
-                'margin': '2px 4px 8px 4px',
-                'background': 'rgb({0},{1},{2})'.format(*VIEWER_NAV_BG_COLOR),
-                'selection-background-color': 'rgba({0},{1},{2},200)'
-                                              .format(*selected_color),
-            }
-        }
-        stylesheet = ''
-        for css_class, css in style_dict.items():
-            style = '{} {{\n'.format(css_class)
-            for elm_name, elm_val in css.items():
-                style += '  {}:{};\n'.format(elm_name, elm_val)
-            style += '}\n'
-            stylesheet += style
-        self.line_edit.setStyleSheet(stylesheet)
+
+        # text_color = self.palette().text().color().toTuple()
+        # selected_color = self.palette().highlight().color().toTuple()
+        # style_dict = {
+        #     'QLineEdit': {
+        #         'color': 'rgb({0},{1},{2})'.format(*text_color),
+        #         'border': '1px solid rgb({0},{1},{2})'
+        #                   .format(*selected_color),
+        #         'border-radius': '3px',
+        #         'padding': '2px 4px',
+        #         'margin': '2px 4px 8px 4px',
+        #         'background': 'rgb({0},{1},{2})'.format(*VIEWER_NAV_BG_COLOR),
+        #         'selection-background-color': 'rgba({0},{1},{2},200)'
+        #                                       .format(*selected_color),
+        #     }
+        # }
+
+        # stylesheet = ''
+        # for css_class, css in style_dict.items():
+        #     style = '{} {{\n'.format(css_class)
+        #     for elm_name, elm_val in css.items():
+        #         style += '  {}:{};\n'.format(elm_name, elm_val)
+        #     style += '}\n'
+        #     stylesheet += style
+
+        # self.line_edit.setStyleSheet(stylesheet)
 
         self._node_dict = node_dict or {}
         if self._node_dict:
@@ -95,36 +98,38 @@ class TabSearchMenuWidget(QtWidgets.QMenu):
         search_widget.setDefaultWidget(self.line_edit)
         self.addAction(search_widget)
 
-        style_dict = {
-            'QMenu': {
-                'color': 'rgb({0},{1},{2})'.format(*text_color),
-                'background-color': 'rgb({0},{1},{2})'.format(*VIEWER_BG_COLOR),
-                'border': '1px solid rgba({0},{1},{2},30)'.format(*text_color),
-                'border-radius': '3px',
-            },
-            'QMenu::item': {
-                'padding': '5px 18px 2px',
-                'background-color': 'transparent',
-            },
-            'QMenu::item:selected': {
-                'color': 'rgb({0},{1},{2})'.format(*text_color),
-                'background-color': 'rgba({0},{1},{2},200)'
-                                    .format(*selected_color),
-            },
-            'QMenu::separator': {
-                'height': '1px',
-                'background': 'rgba({0},{1},{2}, 50)'.format(*text_color),
-                'margin': '4px 8px',
-            }
-        }
-        self._menu_stylesheet = ''
-        for css_class, css in style_dict.items():
-            style = '{} {{\n'.format(css_class)
-            for elm_name, elm_val in css.items():
-                style += '  {}:{};\n'.format(elm_name, elm_val)
-            style += '}\n'
-            self._menu_stylesheet += style
-        self.setStyleSheet(self._menu_stylesheet)
+        # style_dict = {
+        #     'QMenu': {
+        #         'color': 'rgb({0},{1},{2})'.format(*text_color),
+        #         'background-color': 'rgb({0},{1},{2})'.format(*VIEWER_BG_COLOR),
+        #         'border': '1px solid rgba({0},{1},{2},30)'.format(*text_color),
+        #         'border-radius': '3px',
+        #     },
+        #     'QMenu::item': {
+        #         'padding': '5px 18px 2px',
+        #         'background-color': 'transparent',
+        #     },
+        #     'QMenu::item:selected': {
+        #         'color': 'rgb({0},{1},{2})'.format(*text_color),
+        #         'background-color': 'rgba({0},{1},{2},200)'
+        #                             .format(*selected_color),
+        #     },
+        #     'QMenu::separator': {
+        #         'height': '1px',
+        #         'background': 'rgba({0},{1},{2}, 50)'.format(*text_color),
+        #         'margin': '4px 8px',
+        #     }
+        # }
+
+        # self._menu_stylesheet = ''
+        # for css_class, css in style_dict.items():
+        #     style = '{} {{\n'.format(css_class)
+        #     for elm_name, elm_val in css.items():
+        #         style += '  {}:{};\n'.format(elm_name, elm_val)
+        #     style += '}\n'
+        #     self._menu_stylesheet += style
+
+        # self.setStyleSheet(self._menu_stylesheet)
 
         self._actions = {}
         self._menus = {}
@@ -230,11 +235,11 @@ class TabSearchMenuWidget(QtWidgets.QMenu):
                     if menu_name not in menu_tree[depth].keys():
                         new_menu = QtWidgets.QMenu(menu_name)
                         new_menu.keyPressEvent = self.keyPressEvent
-                        new_menu.setStyleSheet(self._menu_stylesheet)
+                        # new_menu.setStyleSheet(self._menu_stylesheet)
                         menu_tree[depth][menu_path] = new_menu
                 else:
                     new_menu = QtWidgets.QMenu(menu_name)
-                    new_menu.setStyleSheet(self._menu_stylesheet)
+                    # new_menu.setStyleSheet(self._menu_stylesheet)
                     menu_tree[depth] = {menu_path: new_menu}
                 if depth > 0 and new_menu:
                     new_menu.parentPath = '::'.join(trees[:depth])

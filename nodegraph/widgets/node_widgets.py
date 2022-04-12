@@ -19,7 +19,7 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
         super(_NodeGroupBox, self).setTitle(text)
 
     def setTitleAlign(self, align='center'):
-        # text_color = self.palette().text().color().toTuple()
+        
         text_color = VIEWER_FONT_COLOR
         style_dict = {
             'QGroupBox': {
@@ -37,6 +37,7 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
                 'padding': '0px',
             }
         }
+
         if self.title():
             style_dict['QGroupBox']['padding-top'] = '14px'
         else:
@@ -57,6 +58,7 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
                 style += '  {}:{};\n'.format(elm_name, elm_val)
             style += '}\n'
             stylesheet += style
+
         self.setStyleSheet(stylesheet)
 
     def add_node_widget(self, widget):
