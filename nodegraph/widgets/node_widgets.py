@@ -51,7 +51,9 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
         elif align == 'right':
             style_dict['QGroupBox::title']['subcontrol-origin'] += 'top right'
             style_dict['QGroupBox::title']['margin-right'] = '4px'
+        
         stylesheet = ''
+        
         for css_class, css in style_dict.items():
             style = '{} {{\n'.format(css_class)
             for elm_name, elm_val in css.items():

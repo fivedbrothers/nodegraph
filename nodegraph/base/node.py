@@ -45,7 +45,7 @@ class NodeObject(object):
 
     """
 
-    # Unique node identifier domain. `eg.` ``"com.chantacticvfx"``
+    # Unique node identifier domain. `eg.` ``"com.fivedbrothers"``
     __identifier__ = 'nodegraph.nodes'
 
     # Base node name.
@@ -72,7 +72,7 @@ class NodeObject(object):
         self._view = _NodeItem()
         self._view.type_ = self.type_
         self._view.name = self.model.name
-        self._view.id = self._model.id
+        self._view.id = self.model.id
 
     def __repr__(self):
         return '<{}("{}") object at {}>'.format(
@@ -82,7 +82,7 @@ class NodeObject(object):
     def type_(cls):
         """
         Node type identifier followed by the class name.
-        `eg.` ``"com.chantacticvfx.NodeObject"``
+        `eg.` ``"com.fivedbrothers.NodeObject"``
 
         Returns:
             str: node type.
