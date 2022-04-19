@@ -192,7 +192,9 @@ class NodeItem(AbstractNodeItem):
         tooltip = '<b>{}</b>'.format(self.name)
         if state:
             tooltip += ' <font color="red"><b>(DISABLED)</b></font>'
-        tooltip += '<br/>{}<br/>'.format(self.type_)
+        tooltip += '<br/>{}'.format(self.type_)
+        tooltip += '<hr>'
+        tooltip += '<small>{}</small>'.format(self.info)
         self.setToolTip(tooltip)
 
     def _set_base_size(self, add_w=0.0, add_h=0.0):
@@ -777,7 +779,7 @@ class NodeItemVertical(NodeItem):
     def __init__(self, name='node', parent=None):
         super(NodeItemVertical, self).__init__(name, parent)
         font = QtGui.QFont()
-        font.setPointSize(15)
+        font.setPointSize(12)
         self.text_item.setFont(font)
 
     def paint(self, painter, option, widget):

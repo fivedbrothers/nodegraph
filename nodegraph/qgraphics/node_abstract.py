@@ -24,6 +24,7 @@ class AbstractNodeItem(QtWidgets.QGraphicsItem):
             'border_color': (46, 57, 66, 255),
             'text_color': (255, 255, 255, 180),
             'type_': 'AbstractBaseNode',
+            'info': '',
             'selected': False,
             'disabled': False,
             'visible': False,
@@ -87,6 +88,14 @@ class AbstractNodeItem(QtWidgets.QGraphicsItem):
     @type_.setter
     def type_(self, node_type='NODE'):
         self._properties['type_'] = node_type
+    
+    @property
+    def info(self):
+        return self._properties['info']
+
+    @info.setter
+    def info(self, node_info=''):
+        self._properties['info'] = node_info
 
     @property
     def size(self):
@@ -174,7 +183,7 @@ class AbstractNodeItem(QtWidgets.QGraphicsItem):
     @xy_pos.setter
     def xy_pos(self, pos=None):
         """
-        set the item scene postion.
+        set the item scene position.
         ("node.pos" conflicted with "QGraphicsItem.pos()"
         so it was refactored to "xy_pos".)
 
