@@ -199,6 +199,7 @@ class AbstractNodeItem(QtWidgets.QGraphicsItem):
 
     @name.setter
     def name(self, name=''):
+        name = '-'.join(name.split(' '))
         self._properties['name'] = name
         self.setToolTip('node: {}'.format(name))
 

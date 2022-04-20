@@ -241,7 +241,7 @@ class NodeObject(object):
         Args:
             name (str): name for the node.
         """
-        self.set_property('name', name)
+        self.set_property('name', '-'.join(name.split(' ')))
 
     def color(self):
         """

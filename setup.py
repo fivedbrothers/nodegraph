@@ -21,7 +21,7 @@ description = (
 classifiers = [
     'Operating System :: OS Independent',
     'License :: OSI Approved :: MIT License',
-    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
     # 'Documentation :: https://jchanvfx.github.io/NodeGraphQt/api/html/index.html',
     # 'Source :: https://github.com/jchanvfx/NodeGraphQt/',
 ]
@@ -39,7 +39,7 @@ setuptools.setup(
     classifiers=classifiers,
     install_requires=requirements,
     include_package_data=True,
-    python_requires='>=3.9',
+    python_requires='>=3.10',
     extras_require={
         'PySide6': ['PySide6==6.2.3']
     }

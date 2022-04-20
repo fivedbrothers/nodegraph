@@ -1178,14 +1178,14 @@ class NodeGraph(QtCore.QObject):
         search = regex.search(name)
         if not search:
             for x in range(1, len(node_names) + 2):
-                new_name = '{} {}'.format(name, x)
+                new_name = '{}-{}'.format(name, x)
                 if new_name not in node_names:
                     return new_name
 
         version = search.group(1)
         name = name[:len(version) * -1].strip()
         for x in range(1, len(node_names) + 2):
-            new_name = '{} {}'.format(name, x)
+            new_name = '{}-{}'.format(name, x)
             if new_name not in node_names:
                 return new_name
 

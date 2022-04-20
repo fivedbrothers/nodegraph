@@ -79,6 +79,7 @@ class NodeModel(object):
         self.inputs = {}
         self.outputs = {}
         self.parameters = {}
+        self.info = None
         self.port_deletion_allowed = False
 
         # GroupNode attrs.
@@ -112,6 +113,7 @@ class NodeModel(object):
             'inputs': NODE_PROP,
             'outputs': NODE_PROP,
             'parameters': NODE_PROP,
+            'info': NODE_PROP,
         }
 
     def __repr__(self):
