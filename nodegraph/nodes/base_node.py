@@ -404,6 +404,11 @@ class BaseNode(NodeObject):
         port.model.node = None
         self.draw()
 
+    def delete_widget(self, name):
+        self._model.custom_properties.pop(name)
+        self._view.delete_widget(name)
+        self.draw()
+
     def set_port_deletion_allowed(self, mode=False):
         """
         Allow ports to be removable on this node.

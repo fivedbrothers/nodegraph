@@ -112,7 +112,6 @@ class NodeModel(object):
             'pos': NODE_PROP,
             'inputs': NODE_PROP,
             'outputs': NODE_PROP,
-            'parameters': NODE_PROP,
             'info': NODE_PROP,
         }
 

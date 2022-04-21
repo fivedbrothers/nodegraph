@@ -749,6 +749,12 @@ class NodeItem(AbstractNodeItem):
 
     def add_widget(self, widget):
         self._widgets[widget.get_name()] = widget
+    
+    def delete_widget(self, name):
+        widget = self.get_widget(name)
+        widget.setParentItem(None)
+        self.scene().removeItem(widget)
+        del widget
 
     def get_widget(self, name):
         widget = self._widgets.get(name)

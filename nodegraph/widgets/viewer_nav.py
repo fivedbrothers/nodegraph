@@ -183,4 +183,4 @@ if __name__ == '__main__':
     widget.resize(600, 30)
     widget.show()
 
-    app.exec_()
+    app.exec()
