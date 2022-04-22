@@ -178,14 +178,12 @@ class NodeGraph(QtCore.QObject):
         self._viewer.moved_nodes.connect(self._on_nodes_moved)
         self._viewer.node_double_clicked.connect(self._on_node_double_clicked)
         self._viewer.node_name_changed.connect(self._on_node_name_changed)
-        self._viewer.node_backdrop_updated.connect(
-            self._on_node_backdrop_updated)
+        self._viewer.node_backdrop_updated.connect(self._on_node_backdrop_updated)
         self._viewer.insert_node.connect(self._on_insert_node)
 
         # pass through translated signals.
         self._viewer.node_selected.connect(self._on_node_selected)
-        self._viewer.node_selection_changed.connect(
-            self._on_node_selection_changed)
+        self._viewer.node_selection_changed.connect(self._on_node_selection_changed)
         self._viewer.data_dropped.connect(self._on_node_data_dropped)
 
     def _on_insert_node(self, pipe, node_id, prev_node_pos):

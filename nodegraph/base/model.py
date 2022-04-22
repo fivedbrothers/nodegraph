@@ -78,7 +78,6 @@ class NodeModel(object):
         # BaseNode attrs.
         self.inputs = {}
         self.outputs = {}
-        self.parameters = {}
         self.info = None
         self.port_deletion_allowed = False
 

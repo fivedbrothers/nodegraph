@@ -309,7 +309,7 @@ class NodeItem(AbstractNodeItem):
             port_text_width = max([p_input_text_width, p_output_text_width])
             port_text_width *= 2
         elif widget_width:
-            side_padding = 10
+            side_padding = 9
 
         width = port_width + max([text_w, port_text_width]) + side_padding
         height = max([text_h, p_input_height, p_output_height, widget_height])
@@ -318,7 +318,7 @@ class NodeItem(AbstractNodeItem):
             width += widget_width
         if widget_height:
             # add bottom margin for node widget.
-            height += 4.0
+            height += 3.0
         height *= 1.05
 
         # additional width, height.
@@ -336,7 +336,7 @@ class NodeItem(AbstractNodeItem):
         """
         icon_rect = self._icon_item.boundingRect()
         text_rect = self._text_item.boundingRect()
-        x = self.boundingRect().left() + 2.0
+        x = self.boundingRect().left() + 3.0
         y = text_rect.center().y() - (icon_rect.height() / 2)
         self._icon_item.setPos(x + h_offset, y + v_offset)
 
@@ -369,10 +369,10 @@ class NodeItem(AbstractNodeItem):
         for widget in self._widgets.values():
             widget_rect = widget.boundingRect()
             if not inputs:
-                x = rect.left() + 10
+                x = rect.left() + 9
                 widget.widget().setTitleAlign('left')
             elif not outputs:
-                x = rect.right() - widget_rect.width() - 10
+                x = rect.right() - widget_rect.width() - 9
                 widget.widget().setTitleAlign('right')
             else:
                 x = rect.center().x() - (widget_rect.width() / 2)
@@ -429,7 +429,7 @@ class NodeItem(AbstractNodeItem):
         Re-draw the node item in the scene.
         (re-implemented for vertical layout design)
         """
-        height = self._text_item.boundingRect().height() + 4.0
+        height = self._text_item.boundingRect().height() + 3.0
 
         # setup initial base size.
         self._set_base_size(add_h=height)
@@ -751,7 +751,7 @@ class NodeItem(AbstractNodeItem):
         self._widgets[widget.get_name()] = widget
     
     def delete_widget(self, name):
-        widget = self.get_widget(name)
+        widget = self._widgets.pop(name)
         widget.setParentItem(None)
         self.scene().removeItem(widget)
         del widget

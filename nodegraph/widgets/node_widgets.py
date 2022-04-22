@@ -10,6 +10,7 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
     def __init__(self, label, parent=None):
         super(_NodeGroupBox, self).__init__(parent)
         layout = QtWidgets.QVBoxLayout(self)
+        # layout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetMinimumSize)
         layout.setSpacing(1)
         self.setTitle(label)
 
@@ -19,17 +20,16 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
         super(_NodeGroupBox, self).setTitle(text)
 
     def setTitleAlign(self, align='center'):
-        
         text_color = VIEWER_FONT_COLOR
         style_dict = {
             'QGroupBox': {
                 'background-color': 'rgba(0, 0, 0, 0)',
                 'border': '0px solid rgba(0, 0, 0, 0)',
                 'margin-top': '1px',
-                'padding-bottom': '2px',
+                'padding-bottom': '3px',
                 'padding-left': '1px',
                 'padding-right': '1px',
-                'font-size': '9pt',
+                'font-size': '9px',
             },
             'QGroupBox::title': {
                 'subcontrol-origin': 'margin',
@@ -39,18 +39,18 @@ class _NodeGroupBox(QtWidgets.QGroupBox):
         }
 
         if self.title():
-            style_dict['QGroupBox']['padding-top'] = '14px'
+            style_dict['QGroupBox']['padding-top'] = '12px'
         else:
-            style_dict['QGroupBox']['padding-top'] = '2px'
+            style_dict['QGroupBox']['padding-top'] = '3px'
 
         if align == 'center':
             style_dict['QGroupBox::title']['subcontrol-origin'] = 'top center'
         elif align == 'left':
             style_dict['QGroupBox::title']['subcontrol-origin'] += 'top left'
-            style_dict['QGroupBox::title']['margin-left'] = '4px'
+            style_dict['QGroupBox::title']['margin-left'] = '3px'
         elif align == 'right':
             style_dict['QGroupBox::title']['subcontrol-origin'] += 'top right'
-            style_dict['QGroupBox::title']['margin-right'] = '4px'
+            style_dict['QGroupBox::title']['margin-right'] = '3px'
         
         stylesheet = ''
         
