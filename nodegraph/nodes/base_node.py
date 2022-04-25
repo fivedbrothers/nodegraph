@@ -82,7 +82,7 @@ class BaseNode(NodeObject):
             self.model.set_property(name, val)
 
         for name, widget in self.view.widgets.items():
-            self.model.set_property(name, widget.value)
+            self.model.set_property(name, widget.get_value())
 
     def set_icon(self, icon=None):
         """
