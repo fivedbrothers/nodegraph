@@ -444,7 +444,7 @@ class NodeItem(AbstractNodeItem):
         # align label text
         self.align_label()
         # align icon
-        self.align_icon(h_offset=2.0, v_offset=1.0)
+        self.align_icon(h_offset=6.0, v_offset=1.5)
         # arrange input and output ports.
         self.align_ports(v_offset=height)
         # arrange node widgets
@@ -949,7 +949,7 @@ class NodeItemVertical(NodeItem):
         # align label text
         self.align_label(h_offset=6)
         # align icon
-        self.align_icon(v_offset=4)
+        self.align_icon(v_offset=6)
         # arrange input and output ports.
         self.align_ports()
         # arrange node widgets
