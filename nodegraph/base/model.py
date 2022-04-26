@@ -19,6 +19,7 @@ class PortModel(object):
     """
 
     def __init__(self, node):
+        self._data = None
         self.node = node
         self.type_ = ''
         self.name = 'port'
@@ -53,6 +54,12 @@ class PortModel(object):
         props.pop('node')
         props['connected_ports'] = dict(props.pop('connected_ports'))
         return props
+
+    def set_data(self, value):
+        self._data = value
+    
+    def get_data(self):
+        return self._data[0]
 
 
 class NodeModel(object):
