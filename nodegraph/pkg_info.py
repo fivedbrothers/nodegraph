@@ -4,7 +4,7 @@ __version__ = '0.2.3'
 __status__ = 'Work in Progress'
 __license__ = 'MIT'
 
-__authors__ = ['Johnny Chan', 'Mark Dasco']
+__authors__ = 'Mark Dasco, Johnny Chan'
 __porter__ = 'fivedbrothers'
 
 __module_name__ = 'nodegraph'

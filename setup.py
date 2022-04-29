@@ -15,15 +15,15 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 description = (
-    'Node graph framework that can be re-implemented into applications that '
+    'A node graph framework that can be re-implemented into applications that '
     'supports PySide6'
 )
 classifiers = [
     'Operating System :: OS Independent',
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python :: 3.10',
-    # 'Documentation :: https://jchanvfx.github.io/NodeGraphQt/api/html/index.html',
-    # 'Source :: https://github.com/jchanvfx/NodeGraphQt/',
+    'Documentation :: https://fivedbrothers.github.io/nodegraph/api/html/index.html',
+    'Source :: https://github.com/fivedbrothers/nodegraph/',
 ]
 
 setuptools.setup(

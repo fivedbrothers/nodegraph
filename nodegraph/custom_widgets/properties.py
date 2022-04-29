@@ -1017,7 +1017,6 @@ if __name__ == '__main__':
                                  widget_type=NODE_PROP_QTEXTEDIT,
                                  tab='text')
 
-
     def prop_changed(node_id, prop_name, prop_value):
         print('-' * 100)
         print(node_id, prop_name, prop_value)
@@ -1040,4 +1039,4 @@ if __name__ == '__main__':
     node_prop.property_closed.connect(prop_close)
     node_prop.show()
 
-    app.exec_()
+    app.exec()
