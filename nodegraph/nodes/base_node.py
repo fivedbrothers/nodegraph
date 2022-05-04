@@ -267,7 +267,7 @@ class BaseNode(NodeObject):
         port.model.multi_connection = multi_input
         port.model.locked = locked
         self._inputs.append(port)
-        self.model.inputs[port.name()] = port.model
+        self.model.input_ports[port.name()] = port.model
         return port
 
     def add_output(self, name='output', multi_output=True, display_name=True,
@@ -309,7 +309,7 @@ class BaseNode(NodeObject):
         port.model.multi_connection = multi_output
         port.model.locked = locked
         self._outputs.append(port)
-        self.model.outputs[port.name()] = port.model
+        self.model.output_ports[port.name()] = port.model
         return port
 
     def get_input(self, port):
@@ -369,7 +369,7 @@ class BaseNode(NodeObject):
         if port.locked():
             raise PortError('Error: Can\'t delete a port that is locked!')
         self._inputs.remove(port)
-        self._model.inputs.pop(port.name())
+        self._model.input_ports.pop(port.name())
         self._view.delete_input(port.view)
         port.model.node = None
         self.draw()
@@ -399,7 +399,7 @@ class BaseNode(NodeObject):
         if port.locked():
             raise PortError('Error: Can\'t delete a port that is locked!')
         self._outputs.remove(port)
-        self._model.outputs.pop(port.name())
+        self._model.output_ports.pop(port.name())
         self._view.delete_output(port.view)
         port.model.node = None
         self.draw()
@@ -482,8 +482,8 @@ class BaseNode(NodeObject):
             port.model.node = None
         self._inputs = []
         self._outputs = []
-        self._model.outputs = {}
-        self._model.inputs = {}
+        self._model.output_ports = {}
+        self._model.input_ports = {}
 
         [self.add_input(name=port['name'],
                         multi_input=port['multi_connection'],

@@ -76,8 +76,8 @@ class NodeModel(object):
         self.pos = [0.0, 0.0]
 
         # BaseNode attrs.
-        self.inputs = {}
-        self.outputs = {}
+        self.input_ports = {}
+        self.output_ports = {}
         self.info = None
         self.port_deletion_allowed = False
 
@@ -85,7 +85,7 @@ class NodeModel(object):
         self.subgraph_session = {}
 
         # Custom
-        self._custom_prop = {}
+        self._custom_properties = {}
 
         # node graph model set at node added time.
         self._graph_model = None
@@ -136,11 +136,11 @@ class NodeModel(object):
         if name in self.properties.keys():
             raise NodePropertyError(
                 '"{}" reserved for default property.'.format(name))
-        if name in self._custom_prop.keys():
+        if name in self._custom_properties.keys():
             raise NodePropertyError(
                 '"{}" property already exists.'.format(name))
 
-        self._custom_prop[name] = value
+        self._custom_properties[name] = value
 
         if self._graph_model is None:
             self._TEMP_property_widget_types[name] = widget_type
@@ -163,15 +163,15 @@ class NodeModel(object):
     def set_property(self, name, value):
         if name in self.properties.keys():
             setattr(self, name, value)
-        elif name in self._custom_prop.keys():
-            self._custom_prop[name] = value
+        elif name in self._custom_properties.keys():
+            self._custom_properties[name] = value
         else:
             raise NodePropertyError('No property "{}"'.format(name))
 
     def get_property(self, name):
         if name in self.properties.keys():
             return self.properties[name]
-        return self._custom_prop.get(name)
+        return self._custom_properties.get(name)
 
     def get_widget_type(self, name):
         model = self._graph_model
@@ -197,7 +197,7 @@ class NodeModel(object):
             dict: default node properties.
         """
         props = self.__dict__.copy()
-        exclude = ['_custom_prop',
+        exclude = ['_custom_properties',
                    '_graph_model',
                    '_TEMP_property_attrs',
                    '_TEMP_property_widget_types']
@@ -212,7 +212,7 @@ class NodeModel(object):
         Returns:
             dict: user defined properties.
         """
-        return self._custom_prop
+        return self._custom_properties
 
     @property
     def to_dict(self):
@@ -253,7 +253,7 @@ class NodeModel(object):
         outputs = {}
         input_ports = []
         output_ports = []
-        for name, model in node_dict.pop('inputs').items():
+        for name, model in node_dict.pop('input_ports').items():
             if self.port_deletion_allowed:
                 input_ports.append({
                     'name': name,
@@ -263,7 +263,7 @@ class NodeModel(object):
             connected_ports = model.to_dict['connected_ports']
             if connected_ports:
                 inputs[name] = connected_ports
-        for name, model in node_dict.pop('outputs').items():
+        for name, model in node_dict.pop('output_ports').items():
             if self.port_deletion_allowed:
                 output_ports.append({
                     'name': name,
@@ -274,7 +274,7 @@ class NodeModel(object):
             if connected_ports:
                 outputs[name] = connected_ports
         if inputs:
-            node_dict['inputs'] = inputs
+            node_dict['input'] = inputs
         if outputs:
             node_dict['outputs'] = outputs
 
@@ -285,7 +285,7 @@ class NodeModel(object):
         if self.subgraph_session:
             node_dict['subgraph_session'] = self.subgraph_session
 
-        custom_props = node_dict.pop('_custom_prop', {})
+        custom_props = node_dict.pop('_custom_properties', {})
         if custom_props:
             node_dict['custom'] = custom_props
 
@@ -314,7 +314,7 @@ class NodeGraphModel(object):
     """
 
     def __init__(self):
-        self.__common_node_props = {}
+        self.__common_node_properties = {}
 
         self.nodes = {}
         self.session = ''
@@ -338,7 +338,7 @@ class NodeGraphModel(object):
                         }
                     }
         """
-        return self.__common_node_props
+        return self.__common_node_properties
 
     def set_node_common_properties(self, attrs):
         """
@@ -360,12 +360,12 @@ class NodeGraphModel(object):
         for node_type in attrs.keys():
             node_props = attrs[node_type]
 
-            if node_type not in self.__common_node_props.keys():
-                self.__common_node_props[node_type] = node_props
+            if node_type not in self.__common_node_properties.keys():
+                self.__common_node_properties[node_type] = node_props
                 continue
 
             for prop_name, prop_attrs in node_props.items():
-                common_props = self.__common_node_props[node_type]
+                common_props = self.__common_node_properties[node_type]
                 if prop_name not in common_props.keys():
                     common_props[prop_name] = prop_attrs
                     continue
@@ -381,4 +381,4 @@ class NodeGraphModel(object):
         Returns:
             dict: node common properties.
         """
-        return self.__common_node_props.get(node_type)
+        return self.__common_node_properties.get(node_type)
