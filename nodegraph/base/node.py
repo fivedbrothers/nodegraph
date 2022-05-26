@@ -201,7 +201,7 @@ class NodeObject(object):
                 'color': (48, 58, 69, 255),
                 'border_color': (85, 100, 100, 255),
                 'text_color': (255, 255, 255, 180),
-                'type': 'com.chantasticvfx.MyNode',
+                'type': 'com.fivedbrothers.MyNode',
                 'selected': False,
                 'disabled': False,
                 'visible': True,
@@ -262,7 +262,7 @@ class NodeObject(object):
             g (int): green value ``0-255`` range.
             b (int): blue value ``0-255`` range.
         """
-        self.set_property('color', (r, g, b, 255))
+        self.set_property('color', (r, g, b, 240))
 
     def disabled(self):
         """

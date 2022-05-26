@@ -1,7 +1,7 @@
 
 from collections import OrderedDict
 
-from PySide6 import QtGui, QtCore, QtWidgets
+from PySide6 import QtGui, QtCore, QtWidgets, QtSvgWidgets
 
 from nodegraph.constants import (IN_PORT, OUT_PORT,
                                    NODE_WIDTH, NODE_HEIGHT,
@@ -27,11 +27,13 @@ class NodeItem(AbstractNodeItem):
 
     def __init__(self, name='node', parent=None):
         super(NodeItem, self).__init__(name, parent)
-        pixmap = QtGui.QPixmap(ICON_NODE_BASE)
-        if pixmap.size().height() > NODE_ICON_SIZE:
-            pixmap = pixmap.scaledToHeight(
-                NODE_ICON_SIZE, QtCore.Qt.SmoothTransformation
-            )
+        # pixmap = QtGui.QPixmap(ICON_NODE_BASE)
+        # if pixmap.size().height() > NODE_ICON_SIZE:
+        #     pixmap = pixmap.scaledToHeight(
+        #         NODE_ICON_SIZE, QtCore.Qt.SmoothTransformation
+        #     )
+        icon = QtGui.QIcon(ICON_NODE_BASE)
+        pixmap = icon.pixmap(QtCore.QSize(NODE_ICON_SIZE, NODE_ICON_SIZE), 9.0)
         self._properties['icon'] = ICON_NODE_BASE
         self._icon_item = QtWidgets.QGraphicsPixmapItem(pixmap, self)
         self._icon_item.setTransformationMode(QtCore.Qt.SmoothTransformation)
@@ -527,11 +529,11 @@ class NodeItem(AbstractNodeItem):
     def icon(self, path=None):
         self._properties['icon'] = path
         path = path or ICON_NODE_BASE
-        pixmap = QtGui.QPixmap(path)
-        if pixmap.size().height() > NODE_ICON_SIZE:
-            pixmap = pixmap.scaledToHeight(NODE_ICON_SIZE,
-                                           QtCore.Qt.SmoothTransformation)
+
+        icon = QtGui.QIcon(path)
+        pixmap = icon.pixmap(QtCore.QSize(NODE_ICON_SIZE, NODE_ICON_SIZE), 9.0)
         self._icon_item.setPixmap(pixmap)
+
         if self.scene():
             self.post_init()
 

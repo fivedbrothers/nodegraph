@@ -27,10 +27,10 @@ class NodeScene(QtWidgets.QGraphicsScene):
         self._grid_color = VIEWER_COLOR_GRID
 
         # dark pen
-        self._pen_dark = QtGui.QPen(self._grid_color)
+        self._pen_dark =  QtGui.QPen(self._grid_color)
         self._pen_dark.setWidthF(self._grid_width)
         # light pen
-        self._pen_light =  QtGui.QPen(self._grid_color.darker(f=75))
+        self._pen_light = QtGui.QPen(self._grid_color.lighter(f=75))
         self._pen_light.setWidthF(self._grid_width)
         # dot pen
         self._pen_dot =  QtGui.QPen(self._grid_color.lighter(f=180))
@@ -62,28 +62,28 @@ class NodeScene(QtWidgets.QGraphicsScene):
         first_top = top - (top % self._grid_size)
 
         # compute lines to be drawn
-        lines_light, lines_dark = [], []
+        lines_dark, lines_light = [], []
         # horizontal lines
         for x in range(first_left, right, self._grid_size):
             if (x % (self._grid_size * self._grid_squares) != 0):
-                lines_dark.append(QtCore.QLineF(x, top, x, bottom))
-            else:
                 lines_light.append(QtCore.QLineF(x, top, x, bottom))
+            else:
+                lines_dark.append(QtCore.QLineF(x, top, x, bottom))
         # vertical lines
         for y in range(first_top, bottom, self._grid_size):
             if (y % (self._grid_size * self._grid_squares) != 0):
-                lines_dark.append(QtCore.QLineF(left, y, right, y))
-            else:
                 lines_light.append(QtCore.QLineF(left, y, right, y))
+            else:
+                lines_dark.append(QtCore.QLineF(left, y, right, y))
         
+        # draw the light lines
+        painter.setPen(self._pen_light)
+        painter.drawLines(lines_light)
+
         # draw the dark lines
         painter.setPen(self._pen_dark)
         painter.drawLines(lines_dark)
 
-        # draw the light lines
-        painter.setPen(self._pen_light)
-        painter.drawLines(lines_light)
-    
     def __draw_dots(self, painter, rect):
         """
         draws the grid dots in the scene.
@@ -171,6 +171,7 @@ class NodeScene(QtWidgets.QGraphicsScene):
     @grid_color.setter
     def grid_color(self, color=(0, 0, 0)):
         self._grid_color = color
+        # self.__set_pens()
 
     @property
     def background_color(self):

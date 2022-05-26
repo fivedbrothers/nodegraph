@@ -38,7 +38,7 @@ class PipeItem(QtWidgets.QGraphicsPathItem):
         self._highlight = False
         self._input_port = input_port
         self._output_port = output_port
-        size = 6.0
+        size = 1.5
         self._arrow = QtGui.QPolygonF()
         self._arrow.append(QtCore.QPointF(-size, size))
         self._arrow.append(QtCore.QPointF(0.0, -size * 1.5))
@@ -434,7 +434,7 @@ class LivePipeItem(PipeItem):
             return
 
         # draw start circle
-        size = 5.0
+        size = 3.0
         rect = QtCore.QRectF(start_pt.x() - (size / 2),
                              start_pt.y() - (size / 2),
                              size, size)
@@ -442,7 +442,7 @@ class LivePipeItem(PipeItem):
         painter.drawEllipse(rect)
 
         # draw middle circle
-        size = 10.0
+        size = 6.0
         if dist < 50.0:
             size *= (dist / 50.0)
         rect = QtCore.QRectF(cen_x-(size/2), cen_y-(size/2), size, size)
