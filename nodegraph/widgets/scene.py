@@ -38,6 +38,16 @@ class NodeScene(QtWidgets.QGraphicsScene):
 
         self.setBackgroundBrush(self._bg_color)
 
+        # linear_grad = QtGui.QLinearGradient()
+        # linear_grad.setCoordinateMode(QtGui.QGradient.StretchToDeviceMode)
+        # linear_grad.setSpread(QtGui.QGradient.PadSpread)
+        # linear_grad.setStart(QtCore.QPointF(1.0, 0.0))
+        # linear_grad.setFinalStop(QtCore.QPointF(1.0, 1.0))
+        # linear_grad.setStops([(0.15, QtGui.QColor('#454545')), (1.00, QtGui.QColor('#787878'))])
+        
+        # self.setBackgroundBrush(linear_grad)
+
+
     def __repr__(self):
         cls_name = str(self.__class__.__name__)
         return '<{}("{}") object at {}>'.format(
