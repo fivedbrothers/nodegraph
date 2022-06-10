@@ -1,6 +1,7 @@
 
 import math
 from distutils.version import LooseVersion
+from turtle import position
 
 from PySide6 import QtGui, QtCore, QtWidgets, QtOpenGLWidgets
 
@@ -337,8 +338,8 @@ class NodeViewer(QtWidgets.QGraphicsView):
         elif event.button() == QtCore.Qt.MiddleButton:
             self.MMB_state = True
 
-        self._origin_pos = event.pos()
-        self._previous_pos = event.pos()
+        self._origin_pos = event.position().toPoint()
+        self._previous_pos = event.position().toPoint()
         (self._prev_selection_nodes,
          self._prev_selection_pipes) = self.selected_items()
 
@@ -347,7 +348,7 @@ class NodeViewer(QtWidgets.QGraphicsView):
             self.tab_search_toggle()
 
         # cursor pos.
-        map_pos = self.mapToScene(event.pos())
+        map_pos = self.mapToScene(event.position().toPoint())
 
         # pipe slicer enabled.
         slicer_mode = all([self.ALT_state, self.SHIFT_state, self.LMB_state])
@@ -419,7 +420,7 @@ class NodeViewer(QtWidgets.QGraphicsView):
                 map_rect = self.mapToScene(rect).boundingRect()
                 self._rubber_band.hide()
 
-                rect = QtCore.QRect(self._origin_pos, event.pos()).normalized()
+                rect = QtCore.QRect(self._origin_pos, event.position().toPoint()).normalized()
                 rect_items = self.scene().items(
                     self.mapToScene(rect).boundingRect()
                 )
@@ -472,22 +473,22 @@ class NodeViewer(QtWidgets.QGraphicsView):
                 p2 = self.mapToScene(self._previous_pos)
                 self._SLICER_PIPE.draw_path(p1, p2)
                 self._SLICER_PIPE.show()
-            self._previous_pos = event.pos()
+            self._previous_pos = event.position().toPoint()
             super(NodeViewer, self).mouseMoveEvent(event)
             return
 
         if self.MMB_state and self.ALT_state:
             pos_x = (event.x() - self._previous_pos.x())
             zoom = 0.1 if pos_x > 0 else -0.1
-            self.__set_viewer_zoom(zoom, 0.05, pos=event.pos())
+            self.__set_viewer_zoom(zoom, 0.05, pos=event.position().toPoint())
         elif self.MMB_state or (self.LMB_state and self.ALT_state):
             previous_pos = self.mapToScene(self._previous_pos)
-            current_pos = self.mapToScene(event.pos())
+            current_pos = self.mapToScene(event.position().toPoint())
             delta = previous_pos - current_pos
             self.__set_viewer_pan(delta.x(), delta.y())
 
         if self.LMB_state and self._rubber_band.isActive:
-            rect = QtCore.QRect(self._origin_pos, event.pos()).normalized()
+            rect = QtCore.QRect(self._origin_pos, event.position().toPoint()).normalized()
             # if the rubber band is too small, do not show it.
             if max(rect.width(), rect.height()) > 5:
                 if not self._rubber_band.isVisible():
@@ -538,21 +539,20 @@ class NodeViewer(QtWidgets.QGraphicsView):
                             self.COLLIDING_state = True
                             break
 
-        self._previous_pos = event.pos()
+        self._previous_pos = event.position().toPoint()
         super(NodeViewer, self).mouseMoveEvent(event)
 
     def wheelEvent(self, event):
         try:
             delta = event.delta()
         except AttributeError:
-            # For PyQt5
             delta = event.angleDelta().y()
             if delta == 0:
                 delta = event.angleDelta().x()
-        self.__set_viewer_zoom(delta, pos=event.pixelDelta())
+        self.__set_viewer_zoom(delta, pos=event.position().toPoint())
 
     def dropEvent(self, event):
-        pos = self.mapToScene(event.pos())
+        pos = self.mapToScene(event.position().toPoint())
         event.setDropAction(QtCore.Qt.CopyAction)
         self.data_dropped.emit(
             event.mimeData(), QtCore.QPoint(pos.x(), pos.y()))
