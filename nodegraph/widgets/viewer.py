@@ -1,7 +1,6 @@
 
 import math
 from distutils.version import LooseVersion
-from turtle import position
 
 from PySide6 import QtGui, QtCore, QtWidgets, QtOpenGLWidgets
 
