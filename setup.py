@@ -41,7 +41,7 @@ setuptools.setup(
     include_package_data=True,
     python_requires='>=3.10',
     extras_require={
-        'PySide6': ['PySide6==6.2.3']
+        'PySide6': ['PySide6>=6.2.3']
     }
 )
 
